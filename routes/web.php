@@ -22,3 +22,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/community', 'TopicsController@index')->name('community');
+Route::get('categories/{category_id}')->name('categories');
+
+Route::group([
+    'prefix' => 'topics'
+], function(){
+    Route::get('show/{public_id}', 'TopicsController@show')->name('topic.show');
+});
+
+Route::group([
+    'prefix' => 'users'
+], function(){
+    Route::get('show/{user_id}')->name('user.show');
+});

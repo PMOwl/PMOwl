@@ -9,7 +9,7 @@
                     <span class="count_seperator">/</span>
                     <span class="count_of_visits" title="查看数">{{ $topic->view_count }}</span>
                     <span class="count_seperator">|</span>
-                    <abbr title="{{ $topic->updated_at }}" class="timeago">{{ $topic->updated_at->diffForHumans() }}</abbr>
+                    <abbr title="{{ $topic->updated_at }}" class="timeago" data-toggle="popover" data-content="{{ $topic->updated_at }}">{{ $topic->updated_at->diffForHumans() }}</abbr>
                 </div>
             </a>
             <div class="avatar pull-left">
@@ -26,7 +26,7 @@
                         <span class="hidden-xs label label"></span>
                     @endif
 
-                    <a href="" title="{!! $topic->title !!}">{!! $topic->title !!}</a>
+                    <a href="{{ route('topic.show', $topic->id) }}" title="{!! $topic->title !!}">{!! $topic->title !!}</a>
                 </div>
             </div>
         </li>

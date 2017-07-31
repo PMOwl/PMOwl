@@ -11,17 +11,24 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    @yield('before-css')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    @yield('after-css')
 </head>
 <body>
-    <div id="app">
-        @include('layouts.partials.nav')
+<div id="app">
+    @include('layouts.partials.nav')
 
-
+    <div class="container main-container">
         @yield('content')
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+</div>
+
+<!-- Scripts -->
+@yield('before-js')
+<script src="{{ asset('js/app.js') }}"></script>
+@yield('after-js')
 </body>
 </html>

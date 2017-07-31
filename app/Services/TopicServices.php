@@ -14,6 +14,19 @@ use App\Models\Topic;
 class TopicServices
 {
     /**
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Model|static
+     */
+    public function getTopic($id)
+    {
+        $model = app(Topic::class);
+
+        $result = $model::where('id', $id)->with('user')->firstOrFail();
+
+        return $result;
+    }
+
+    /**
      * @param $filter
      * @param int $perPage
      * @return mixed
@@ -43,6 +56,7 @@ class TopicServices
     }
 
     /**
+     * 根据过滤取数据
      * @param $filter
      * @return $this
      */
