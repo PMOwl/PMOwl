@@ -23,7 +23,7 @@
                         <span class="hidden-xs label label-{{ ($topic->is_excellent == 'yes' && Route::currentRouteName() != 'home') ? 'success' : 'default' }}">{!! $topic->category->name !!}
                             ">{{ trans('stick') }}</span>
                     @else
-                        <span class="hidden-xs label label"></span>
+                        <span class="hidden-xs label label-default">{{ $topic->category->name }}</span>
                     @endif
 
                     <a href="{{ route('topic.show', $topic->id) }}" title="{!! $topic->title !!}">{!! $topic->title !!}</a>

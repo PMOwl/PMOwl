@@ -3,15 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Topic;
 use App\Services\TopicServices;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TopicsController extends Controller
 {
-    public function __construct()
+    /**
+     * @var TopicServices
+     */
+    private $topicServices;
+
+    public function __construct(TopicServices $topicServices)
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->topicServices = $topicServices;
     }
 
     /**
@@ -19,11 +26,11 @@ class TopicsController extends Controller
      * @param TopicServices $topic
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Request $request, TopicServices $topicServices)
+    public function index(Request $request)
     {
         $filter = $request->get('filter', 'index');
 
-        $topics = $topicServices->getTopicsWithFilter($filter, 40);
+        $topics = $this->topicServices->getTopicsWithFilter($filter, 40);
 
         return view('topics.index', compact('topics'));
     }
@@ -43,24 +50,27 @@ class TopicsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $params = $request->only('category_id', 'title', 'body');
+
+        $topicId = $this->topicServices->storeTopic($params);
+
+        return redirect(route('topic.show', $topicId));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, TopicServices $topicServices)
+    public function show($id)
     {
-
-        $topic = $topicServices->getTopic($id);
+        $topic = $this->topicServices->getTopic($id);
 
         return view('topics.show', compact('topic'));
     }
@@ -68,7 +78,7 @@ class TopicsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -79,8 +89,8 @@ class TopicsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -91,7 +101,7 @@ class TopicsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

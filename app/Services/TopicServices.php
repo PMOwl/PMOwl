@@ -14,6 +14,23 @@ use App\Models\Topic;
 class TopicServices
 {
     /**
+     * 创建帖子
+     * @param $params
+     * @return mixed
+     */
+    public function storeTopic($params)
+    {
+        $params['user_id'] = \Auth::id();
+
+        $model = new Topic($params);
+        $model->save();
+        $topicId = $model->getQueueableId();
+
+        return $topicId;
+    }
+
+    /**
+     * 获取帖子
      * @param $id
      * @return \Illuminate\Database\Eloquent\Model|static
      */
@@ -27,6 +44,7 @@ class TopicServices
     }
 
     /**
+     * 获取类别分页数据
      * @param $filter
      * @param int $perPage
      * @return mixed
