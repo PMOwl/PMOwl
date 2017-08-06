@@ -21,7 +21,7 @@
                 @if (isset($topic))
                     <form method="POST" action="{{ route('topic.update', $topic->id) }}" accept-charset="UTF-8"
                           id="topic-edit-form" class="topic-form">
-                        <input name="_method" type="hidden" value="PATCH">
+                        {{ method_field('PUT') }}
                         @else
                             <form method="POST" action="{{ route('topic.store') }}" accept-charset="UTF-8"
                                   id="topic-create-form" class="topic-form">
@@ -31,15 +31,19 @@
                                     <select title="分类" class="selectpicker form-control" name="category_id"
                                             id="category-select"
                                             required>
-                                        <option value="" disabled selected>{{ trans('site.info.Pick a category') }}</option>
+                                        <option value="" disabled
+                                                selected>{{ trans('site.info.Pick a category') }}</option>
                                         @foreach ($categories as $value)
-                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                            <option value="{{ $value->id }}"
+                                                    @if($topic && $topic->category_id === $value->id) selected @endif>{{ $value->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 @foreach ($categories as $value)
+
                                     <div class="category-hint alert alert-warning animated rubberBand"
-                                         id="category-{{ $value->id }}" style="display:none">{!! $value->slug !!}</div>
+                                         id="category-{{ $value->id }}"
+                                         @if($topic && $topic->category_id === $value->id)  @else style="display:none" @endif>{!! $value->slug !!}</div>
                                 @endforeach
 
                                 <div class="form-group">
@@ -51,12 +55,12 @@
                                 <div class="form-group">
                                     <!-- 编辑器容器 -->
                                     <script id="container" name="body"
-                                            type="text/plain">{{ !isset($topic) ? '' : $topic->body_original }}</script>
+                                            type="text/plain">{!! !isset($topic) ? '' : $topic->body !!}</script>
                                 </div>
 
                                 <div class="form-group status-post-submit">
                                     <button class="btn btn-primary submit-btn"
-                                            id="topic-submit">{{ trans('site.button.Publish') }}</button>
+                                            id="topic-submit">{{ !isset($topic) ? trans('site.button.Publish') : trans('site.button.Update') }}</button>
                                 </div>
 
                             </form>

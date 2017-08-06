@@ -23,6 +23,7 @@ return [
         'Reads' => '阅读',
     ],
     'button' => [
-        'Publish' => '发布'
+        'Publish' => '发布',
+        'Update' => '更新',
     ]
 ];

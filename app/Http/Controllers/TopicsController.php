@@ -45,7 +45,7 @@ class TopicsController extends Controller
     {
         $categories = Category::all();
 
-        return view('topics.create', compact('categories', 'category'));
+        return view('topics.create-and-edit', compact('categories'));
     }
 
     /**
@@ -88,7 +88,11 @@ class TopicsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::all();
+
+        $topic = $this->topicServices->getTopic($id);
+
+        return view('topics.create-and-edit', compact('categories', 'topic'));
     }
 
     /**
