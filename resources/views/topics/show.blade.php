@@ -22,7 +22,7 @@
 
                 <div data-lang-excellent="{{ trans('This topic has been mark as Excenllent Topic.') }}"
                      data-lang-wiki="{{ trans('This is a Community Wiki.') }}" class="ribbon-container">
-                    {{--@include('topics.partials.ribbon')--}}
+                    @include('topics.partials.ribbon')
                 </div>
             </div>
             <div class="appends-container" data-lang-append="{{ trans('Append') }}">
@@ -66,12 +66,11 @@
                     {{--@endif--}}
                 {{--</div>--}}
             {{--@endif--}}
-            {{--@include('topics.partials.topic_operate', ['manage_topics' => $currentUser ? ($currentUser->can("manage_topics") && $currentUser->roles->count() <= 5) : false])--}}
+            @include('topics.partials.topic-operate', ['manage_topics' => Auth::user() ? (Auth::user()->can("manage_topics") && Auth::user()->roles->count() <= 5) : false])
         </div>
 
 
-        {{--@include('topics.partials.show_segment')--}}
-
+        {{--@include('topics.partials.show-segment')--}}
     </div>
 
     {{--@if( $topic->user->payment_qrcode )--}}

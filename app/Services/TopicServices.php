@@ -30,6 +30,43 @@ class TopicServices
     }
 
     /**
+     * 删除帖子
+     * @param $id
+     * @param bool $force
+     * @return bool|null
+     */
+    public function destroyTopic($id, $force = false)
+    {
+        $model = app(Topic::class);
+        $topic = $model->find($id);
+
+        if ($force) {
+           $result = $topic->forceDelete();
+        } else {
+            $result = $topic->delete();
+        }
+
+        return $result;
+    }
+
+    /**
+     * 更新帖子
+     * @param $id
+     * @param $params
+     * @return bool
+     */
+    public function updateTopic($id, $params)
+    {
+        $model = app(Topic::class);
+        $topic = $model->find($id);
+
+        $result = $topic->update($params);
+
+        return $result;
+    }
+
+
+    /**
      * 获取帖子
      * @param $id
      * @return \Illuminate\Database\Eloquent\Model|static

@@ -60,7 +60,7 @@ class TopicsController extends Controller
 
         $topicId = $this->topicServices->storeTopic($params);
 
-        return redirect(route('topic.show', $topicId));
+        return redirect()->route('topic.show', $topicId);
     }
 
     /**
@@ -104,7 +104,11 @@ class TopicsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $params = $request->only('category_id', 'title', 'body');
+
+        $this->topicServices->updateTopic($id, $params);
+
+        return redirect()->route('topic.show', $id);
     }
 
     /**
@@ -115,6 +119,8 @@ class TopicsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->topicServices->destroyTopic($id);
+
+        return redirect()->route('community');
     }
 }
