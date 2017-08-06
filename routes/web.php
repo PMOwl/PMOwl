@@ -24,12 +24,19 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/community', 'TopicsController@index')->name('community');
 Route::get('categories/{category_id}')->name('categories');
 
+// 贴子
 Route::group([
     'prefix' => 'topics'
 ], function(){
     Route::get('show/{public_id}', 'TopicsController@show')->name('topic.show');
+    Route::get('create', 'TopicsController@create')->name('topic.create');
+    Route::post('store', 'TopicsController@store')->name('topic.store');
+    Route::get('edit', 'TopicsController@edit')->name('topic.edit');
+    Route::put('update', 'TopicsController@update')->name('topic.update');
+    Route::delete('delete', 'TopicsController@destroy')->name('topic.delete');
 });
 
+// 用户
 Route::group([
     'prefix' => 'users'
 ], function(){

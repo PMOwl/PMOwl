@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Services\TopicServices;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -34,7 +35,9 @@ class TopicsController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view('topics.create', compact('categories', 'category'));
     }
 
     /**

@@ -13,7 +13,7 @@
         <!-- Topic Detial -->
         <div class="topic panel panel-default">
             <div class="infos panel-heading">
-                <h1 class="panel-title topic-title">{{{ $topic->title }}}</h1>
+                <h1 class="panel-title topic-title">{!!  $topic->title !!}</h1>
 
                 @include('topics.partials.meta')
             </div>
