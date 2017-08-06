@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Topic;
 use App\Services\TopicServices;
+use App\Utils\EntityUtil;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -71,6 +72,10 @@ class TopicsController extends Controller
     public function show($id)
     {
         $topic = $this->topicServices->getTopic($id);
+
+        $hits = EntityUtil::updateHit($topic, EntityUtil::TOPIC);
+
+        $topic->view_count = $topic->view_count + $hits;
 
         return view('topics.show', compact('topic'));
     }
