@@ -35,7 +35,7 @@
                                                 selected>{{ trans('site.info.Pick a category') }}</option>
                                         @foreach ($categories as $value)
                                             <option value="{{ $value->id }}"
-                                                    @if($topic && $topic->category_id === $value->id) selected @endif>{{ $value->name }}</option>
+                                                    @if(isset($topic) && $topic->category_id === $value->id) selected @endif>{{ $value->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -43,7 +43,7 @@
 
                                     <div class="category-hint alert alert-warning animated rubberBand"
                                          id="category-{{ $value->id }}"
-                                         @if($topic && $topic->category_id === $value->id)  @else style="display:none" @endif>{!! $value->slug !!}</div>
+                                         @if(isset($topic) && $topic->category_id === $value->id)  @else style="display:none" @endif>{!! $value->slug !!}</div>
                                 @endforeach
 
                                 <div class="form-group">

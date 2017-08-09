@@ -33,7 +33,7 @@ Route::group([
     Route::post('store', 'TopicsController@store')->name('topic.store');
     Route::get('{public_id}/edit', 'TopicsController@edit')->name('topic.edit');
     Route::put('{public_id}/update', 'TopicsController@update')->name('topic.update');
-    Route::delete('delete', 'TopicsController@destroy')->name('topic.delete');
+    Route::delete('{public_id}/delete', 'TopicsController@destroy')->name('topic.delete');
 });
 
 // 用户

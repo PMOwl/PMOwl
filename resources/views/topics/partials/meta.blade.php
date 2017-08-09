@@ -8,14 +8,14 @@
         {{{ $topic->user->name }}}
     </a>
     ⋅
-    {{ trans('site.info.at') }} <abbr title="{{ $topic->created_at }}" class="timeago" data-toggle="popover" data-content="{{ $topic->updated_at }}">{{ $topic->created_at->diffForHumans() }}</abbr>
+    {{ trans('site.info.publish at') }} <abbr title="{{ $topic->created_at }}" class="timeago" data-toggle="popover" data-content="{{ $topic->updated_at }}">{{ $topic->created_at->diffForHumans() }}</abbr>
     ⋅
     @if (count($topic->lastReplyUser))
         {{ trans('site.info.Last Reply by') }}
         <a href="{{ route('users.show', [$topic->lastReplyUser->id]) }}">
             {{{ $topic->lastReplyUser->name }}}
         </a>
-        {{ trans('site.info.at') }} <abbr title="{{ $topic->updated_at }}" class="timeago">{{ $topic->updated_at }}</abbr>
+        {{ trans('site.info.publish at') }} <abbr title="{{ $topic->updated_at }}" class="timeago">{{ $topic->updated_at }}</abbr>
         ⋅
     @endif
     {{ $topic->view_count }} {{ trans('site.info.Reads') }}
