@@ -7,6 +7,9 @@
  */
 
 return [
+    'site_title' => [
+        'index' => '首页'
+    ],
     'category' => [
         'active' => '活跃',
         'excellent' => '精华',
