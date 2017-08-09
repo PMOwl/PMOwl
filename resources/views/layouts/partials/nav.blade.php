@@ -12,6 +12,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="{{ url('/assets/images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}" />
                 {{ config('app.name', 'Laravel') }}
             </a>
         </div>
