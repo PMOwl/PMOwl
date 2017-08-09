@@ -24,10 +24,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/community', 'TopicsController@index')->name('community');
 Route::get('categories/{category_id}')->name('categories');
 
+Route::group([
+    'prefix' => 'socialite'
+], function () {
+    Route::get('auth', 'Auth\SocialiteController@auth');
+    Route::get('callback', 'Auth\SocialiteController@callBack');
+});
+
 // 贴子
 Route::group([
     'prefix' => 'topics'
-], function(){
+], function () {
     Route::get('show/{public_id}', 'TopicsController@show')->name('topic.show');
     Route::get('create', 'TopicsController@create')->name('topic.create');
     Route::post('store', 'TopicsController@store')->name('topic.store');
@@ -39,6 +46,6 @@ Route::group([
 // 用户
 Route::group([
     'prefix' => 'users'
-], function(){
+], function () {
     Route::get('show/{user_id}')->name('user.show');
 });
