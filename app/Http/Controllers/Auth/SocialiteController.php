@@ -62,6 +62,7 @@ class SocialiteController extends Controller
     public function auth(Request $request)
     {
         $driver = $request->get('driver');
+
         $socialiteService = app(SocialiteServices::class);
 
         if ($driver == SocialiteServices::DRIVER_GITHUB) {
@@ -79,7 +80,7 @@ class SocialiteController extends Controller
      */
     public function callBack(Request $request)
     {
-        $driver = $request->get('driver');
+        $driver = Session::get('socialiteDriver');
 
         if (!in_array($driver, SocialiteServices::allowDriver()) || (Auth::check() && Auth::user()->register_source == $driver)) {
             return redirect()->intended('/');

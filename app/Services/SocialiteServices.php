@@ -42,6 +42,8 @@ class SocialiteServices
 
         $driver = $socialite->driver('wechat_open');
 
+        Session::put('socialiteDriver', self::DRIVER_WECHAT_OPEN);
+
         return $this->auth($driver);
     }
 
@@ -69,6 +71,8 @@ class SocialiteServices
         $socialite = new SocialiteManager($config);
 
         $driver = $socialite->driver('github');
+
+        Session::put('socialiteDriver', self::DRIVER_GITHUB);
 
         return $this->auth($driver);
     }
