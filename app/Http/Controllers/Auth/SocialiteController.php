@@ -93,7 +93,7 @@ class SocialiteController extends Controller
         } else {
             $socialiteUser = $socialiteService->wechatOpenCallback();
         }
-        info('callback info', $socialiteUser);
+        info('callback info', $socialiteUser->toArray());
 
         $user = $socialiteService->getByDriver($driver, $socialiteUser->id);
 
