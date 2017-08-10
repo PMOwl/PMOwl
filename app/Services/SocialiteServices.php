@@ -157,14 +157,14 @@ class SocialiteServices
     {
         $functionMap = [
             'github' => 'getByGithubId',
-            'wechat_open' => 'getByWechatId'
+            'wechat_open' => 'getByWechatOpenId'
         ];
         $function = $functionMap[$driver];
         if (!$function) {
             return null;
         }
 
-        return $this->{$function($id)};
+        return $this->$function($id);
     }
 
     /**
@@ -180,7 +180,7 @@ class SocialiteServices
      * @param $id
      * @return mixed
      */
-    protected function getByWechatId($id)
+    protected function getByWechatOpenId($id)
     {
         return app(UserRepository::class)->findBy('wechat_openid', $id)->first();
     }
