@@ -11,7 +11,7 @@
             <div class="markdown-body" id="emojify">
 
 
-                <h1 id="toc_0">关于 {{ env('APP_NAME') }}</h1>
+                <h1 id="toc_0">关于 {{ config('app.name') }}</h1>
 
                 <h2 id="toc_1">说明</h2>
 
@@ -31,7 +31,7 @@
                 <h2 id="toc_3">愿景 Vision</h2>
 
                 <blockquote>
-                    <p>下面是 {{ env('APP_URL') }} 创建的初衷，与君共勉。</p>
+                    <p>下面是 {{ config('app.url') }} 创建的初衷，与君共勉。</p>
                 </blockquote>
 
                 <h3 id="toc_4">在这里的我们</h3>
