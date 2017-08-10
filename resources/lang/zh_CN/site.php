@@ -8,7 +8,8 @@
 
 return [
     'site_title' => [
-        'index' => '首页'
+        'index' => '首页',
+        'Create New Account' => '创建新账号'
     ],
     'category' => [
         'active' => '活跃',
@@ -28,5 +29,14 @@ return [
     'button' => [
         'Publish' => '发布',
         'Update' => '更新',
+        'Confirm' => '确认'
+    ],
+    'input_name' => [
+        'avatar' => '头像',
+        'username' => '用户名',
+        'email' => 'Email',
+        'password' => '密码',
+        'password_confirmation' => '密码确认',
+        ''
     ]
 ];

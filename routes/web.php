@@ -29,6 +29,8 @@ Route::group([
 ], function () {
     Route::get('auth', 'Auth\SocialiteController@auth');
     Route::get('callback', 'Auth\SocialiteController@callBack');
+    Route::get('create-confirm', 'Auth\SocialiteController@createSocialiteView')->name('socialite.signUpView');
+    Route::post('create-confirm', 'Auth\SocialiteController@createNewUser')->name('socialite.signUp');
 });
 
 // 贴子

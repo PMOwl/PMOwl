@@ -22,6 +22,8 @@
     @include('layouts.partials.nav')
 
     <div class="container main-container">
+        @include('flash::message')
+
         @yield('content')
     </div>
 
