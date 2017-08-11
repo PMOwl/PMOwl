@@ -50,5 +50,6 @@ Route::group([
 Route::group([
     'prefix' => 'users'
 ], function () {
-    Route::get('show/{user_id}')->name('user.show');
+    Route::get('show/{user_id}', 'UserController@show')->name('user.show');
+    Route::get('{user_id}/edit', 'UserController@edit')->name('user.edit');
 });

@@ -123,7 +123,7 @@ class SocialiteController extends Controller
 
                 flash()->success(trans('Login Successfully.'));
 
-                return redirect()->route('users.edit', Auth::user()->id);
+                return redirect()->route('user.edit', Auth::user()->id);
 
             }
 
