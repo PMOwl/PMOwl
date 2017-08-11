@@ -25,7 +25,7 @@
 
                         <div class="form-group {{{ $errors->has('name') ? 'has-error' : '' }}}">
                             <label class="control-label" for="name">{{ trans('site.input_name.username') }}</label>
-                            <input class="form-control" id="name" name="name" type="text" value="{{ $socialiteUser['name'] ?: '' }}">
+                            <input class="form-control" id="name" name="name" type="text" value="{{ $socialiteUser['nickname'] ?: '' }}">
                             {!! $errors->first('name', '<span class="help-block">:message</span>') !!}
                         </div>
 
@@ -33,7 +33,7 @@
                             <div class="form-group {{{ $errors->has('github_name') ? 'has-error' : '' }}}">
                                 <label class="control-label" for="github_name">Github Name</label>
                                 <input class="form-control" readonly="readonly" id="github_name" name="github_name" type="text"
-                                       value="{{ isset($socialiteUser['nickname']) ? $socialiteUser['nickname'] : $socialiteUser['name'] }}">
+                                       value="{{ isset($socialiteUser['name']) ? $socialiteUser['name'] : $socialiteUser['nickname'] }}">
                                 {!! $errors->first('github_name', '<span class="help-block">:message</span>') !!}
                             </div>
                         @endif
