@@ -24,7 +24,7 @@
 
                         <div class="form-group {{{ $errors->has('name') ? 'has-error' : '' }}}">
                             <label class="control-label" for="name">{{ trans('site.input_name.username') }}</label>
-                            <input class="form-control" id="name" name="name" type="text" value="{{ $oauthData['name'] ?: '' }}">
+                            <input class="form-control" id="name" name="name" type="text" value="{{ $socialiteUser['name'] ?: '' }}">
                             {!! $errors->first('name', '<span class="help-block">:message</span>') !!}
                         </div>
 
@@ -32,7 +32,7 @@
                             <div class="form-group {{{ $errors->has('github_name') ? 'has-error' : '' }}}">
                                 <label class="control-label" for="github_name">Github Name</label>
                                 <input class="form-control" readonly="readonly" id="github_name" name="github_name" type="text"
-                                       value="{{ isset($oauthData['github_name']) ? $socialiteUser['github_name'] : $socialiteUser['name'] }}">
+                                       value="{{ isset($socialiteUser['github_name']) ? $socialiteUser['github_name'] : $socialiteUser['name'] }}">
                                 {!! $errors->first('github_name', '<span class="help-block">:message</span>') !!}
                             </div>
                         @endif
@@ -40,7 +40,7 @@
                         <div class="form-group {{{ $errors->has('email') ? 'has-error' : '' }}}">
                             <label class="control-label" for="email">{{ trans('site.input_name.email') }}</label>
                             <input class="form-control" id="email" name="email" type="text"
-                                   value="{{ $oauthData['email'] ?: '' }}">
+                                   value="{{ $socialiteUser['email'] ?: '' }}">
                             {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
                         </div>
 
