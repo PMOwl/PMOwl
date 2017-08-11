@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <label class="control-label" for="name">{{ trans('site.input_name.avatar') }}</label>
                             <div class="form-group">
-                                <img src="{{ $socialiteUser['image_url'] }}" width="100%"/>
+                                <img src="{{ $socialiteUser['avatar'] }}" width="100%"/>
                             </div>
                         </div>
 
