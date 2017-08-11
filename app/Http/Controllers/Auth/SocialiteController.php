@@ -8,6 +8,7 @@ use App\Repositories\UserRepository;
 use App\Services\SocialiteServices;
 use Auth;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 use Session;
 
 class SocialiteController extends Controller
@@ -22,7 +23,7 @@ class SocialiteController extends Controller
      */
     public function createSocialiteView()
     {
-        if (! Session::has('socialiteData')) {
+        if (!Session::has('socialiteData')) {
             return redirect()->route('login');
         }
 
@@ -38,7 +39,7 @@ class SocialiteController extends Controller
      */
     public function createNewUser(StoreUserRequest $request)
     {
-        if (! Session::has('socialiteData')) {
+        if (!Session::has('socialiteData')) {
             return redirect()->route('login');
         }
 
@@ -48,7 +49,7 @@ class SocialiteController extends Controller
         $userData['register_source'] = $socialiteUser['driver'];
 
         $result = app(SocialiteServices::class)->createUser($userData);
-        if($result){
+        if ($result) {
             Auth::login(app(UserRepository::class)->find($result));
             return redirect()->route('home');
         }
@@ -61,7 +62,11 @@ class SocialiteController extends Controller
      */
     public function auth(Request $request)
     {
-        $driver = $request->get('driver');
+        $driver = $request->get('driver', SocialiteServices::DRIVER_GITHUB);
+
+        if (Auth::check() && Auth::user()->register_source == $driver) {
+            return redirect('/');
+        }
 
         $socialiteService = app(SocialiteServices::class);
 
@@ -107,12 +112,22 @@ class SocialiteController extends Controller
             }
             return redirect()->route('user.edit_social_binding', Auth::id());
         } else {
-            // 新注册账号
-            // TODO 封禁用户
-//            if ($user && $user->is_banned == 'yes') {
-//                return redirect()->route('user-banned');
-//            }
+            if ($user) {
+                // TODO 封禁用户
+                if ($user->is_banned) {
+                    return redirect()->route('user-banned');
+                }
 
+                Auth::login($user, true);
+                Session::forget('socialiteData');
+
+                flash()->success(trans('Login Successfully.'));
+
+                return redirect()->route('users.edit', Auth::user()->id);
+
+            }
+
+            // 新注册账号
             $socialiteService->userNotFound($driver, $socialiteUser);
             return redirect()->route('socialite.signUpView');
         }
