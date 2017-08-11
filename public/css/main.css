@@ -4,7 +4,7 @@ body {
   height: 100%;
   font-size: 14px;
   color: #525252;
-  font-family: NotoSansHans-Regular,AvenirNext-Regular,arial,Hiragino Sans GB,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
+  font-family: NotoSansHans-Regular, AvenirNext-Regular, arial, Hiragino Sans GB, "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
   background: #f0f2f5;
 }
 
@@ -123,8 +123,8 @@ ul.list li {
   background-color: #fff;
   padding: 10px;
   margin: 0 0 20px 0;
-  -webkit-box-shadow: 0 .2em 0 0 #ddd,0 0 0 1px #ddd;
-          box-shadow: 0 .2em 0 0 #ddd,0 0 0 1px #ddd;
+  -webkit-box-shadow: 0 .2em 0 0 #ddd, 0 0 0 1px #ddd;
+          box-shadow: 0 .2em 0 0 #ddd, 0 0 0 1px #ddd;
 }
 
 .panel {
@@ -1259,8 +1259,8 @@ div#preview-box {
   border: none;
   background-color: #E5F9E7;
   color: #1EBC30;
-  -webkit-box-shadow: 0 0 0 1px #1EBC30 inset,0 0 0 0 transparent;
-          box-shadow: 0 0 0 1px #1EBC30 inset,0 0 0 0 transparent;
+  -webkit-box-shadow: 0 0 0 1px #1EBC30 inset, 0 0 0 0 transparent;
+          box-shadow: 0 0 0 1px #1EBC30 inset, 0 0 0 0 transparent;
 }
 
 .alert-info {
@@ -1638,6 +1638,13 @@ span.timeago {
   width: 100%;
 }
 
+.friendship-link li {
+  float: left;
+  position: relative;
+  display: block;
+  margin: 5px;
+}
+
 .topics-index .panel-heading {
   background-color: #fff;
 }
@@ -1697,7 +1704,7 @@ a {
     height: 206px;
   }
 
-  #wrap {
+  #app {
     min-height: 100%;
     position: relative;
   }
