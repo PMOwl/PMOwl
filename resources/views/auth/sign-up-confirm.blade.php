@@ -19,7 +19,6 @@
                             <label class="control-label" for="name">{{ trans('site.input_name.avatar') }}</label>
                             <div class="form-group">
                                 <img src="{{ $socialiteUser['avatar'] }}" width="100%"/>
-                                <input type="hidden" name="avatar" value="{{ $socialiteUser['avatar'] }}">
                             </div>
                         </div>
 
