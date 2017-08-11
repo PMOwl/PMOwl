@@ -65,9 +65,9 @@
                         <a href="{{ url('/socialite/auth?driver=github') }}" class="btn btn-lg btn-default btn-block">
                             <i class="fa fa-github-alt"> GitHub 登录</i>
                         </a>
-                        <a href="{{ url('/socialite/auth?driver=wechat') }}" class="btn btn-lg btn-default btn-block">
-                            <i class="fa fa-weixin"> 微信登录</i>
-                        </a>
+                        {{--<a href="{{ url('/socialite/auth?driver=wechat_open') }}" class="btn btn-lg btn-default btn-block">--}}
+                            {{--<i class="fa fa-weixin"> 微信登录</i>--}}
+                        {{--</a>--}}
                     </div>
                 </div>
             </div>
