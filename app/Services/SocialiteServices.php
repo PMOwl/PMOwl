@@ -123,7 +123,7 @@ class SocialiteServices
                 $socialiteData['avatar'] = $registerUserData['avatar'];
                 $socialiteData['github_id'] = $registerUserData['id'];
                 $socialiteData['github_url'] = $registerUserData['original']['url'];
-                $socialiteData['name'] = $registerUserData['nickname'];
+                $socialiteData['nickname'] = $registerUserData['nickname'];
                 $socialiteData['name'] = $registerUserData['name'];
                 $socialiteData['email'] = $registerUserData['email'];
                 break;

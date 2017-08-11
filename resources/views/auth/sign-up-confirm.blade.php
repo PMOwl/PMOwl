@@ -19,6 +19,7 @@
                             <label class="control-label" for="name">{{ trans('site.input_name.avatar') }}</label>
                             <div class="form-group">
                                 <img src="{{ $socialiteUser['avatar'] }}" width="100%"/>
+                                <input type="hidden" name="avatar" value="{{ $socialiteUser['avatar'] }}">
                             </div>
                         </div>
 
@@ -32,7 +33,7 @@
                             <div class="form-group {{{ $errors->has('github_name') ? 'has-error' : '' }}}">
                                 <label class="control-label" for="github_name">Github Name</label>
                                 <input class="form-control" readonly="readonly" id="github_name" name="github_name" type="text"
-                                       value="{{ isset($socialiteUser['github_name']) ? $socialiteUser['github_name'] : $socialiteUser['name'] }}">
+                                       value="{{ isset($socialiteUser['nickname']) ? $socialiteUser['nickname'] : $socialiteUser['name'] }}">
                                 {!! $errors->first('github_name', '<span class="help-block">:message</span>') !!}
                             </div>
                         @endif
