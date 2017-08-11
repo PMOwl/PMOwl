@@ -8,7 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', config('app.name', 'Laravel')) - {{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title', config('app.name', 'Laravel')) - PMOwl 机器学习社区::专注于研究机器学习相关技术</title>
+    <meta name="description" content="@yield('site_description', 'PMOwl 机器学习社区，分享最新的国内外机器学习行业动态，交流机器学习资讯、技术等相关知识，PMOwl 机器学习社区是机器学习爱好者最好的交流学习社区。')" />
+    <meta name="keywords" content="@yield('site_keywords', '机器学习,人工智能,AI,深度学习,机器学习社区')" />
 
     <!-- Styles -->
     @yield('before-css')
