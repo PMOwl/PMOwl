@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-    {{{ $topic->title }}} | @parent
+    {{ $topic->title }}
 @endSection
 
 @section('description')
-    {{{ $topic->excerpt }}}
+    {{ $topic->excerpt }}
 @endSection
 
 @section('content')
