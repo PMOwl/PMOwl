@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Lingxi\Hashids\ModelTraits\PublicId;
 
 class User extends Authenticatable
 {
+    use PublicId;
     use Notifiable;
 
     /**

@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Lingxi\Hashids\ModelTraits\PublicId;
 
 class Reply extends Model
 {
+    use PublicId;
     use SoftDeletes;
 
     protected $fillable = [

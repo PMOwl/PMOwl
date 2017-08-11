@@ -60,7 +60,7 @@ class TopicsController extends Controller
 
         $topicId = $this->topicServices->storeTopic($params);
 
-        return redirect()->route('topic.show', $topicId);
+        return redirect()->route('topic.show', publicId($topicId));
     }
 
     /**
@@ -108,7 +108,7 @@ class TopicsController extends Controller
 
         $this->topicServices->updateTopic($id, $params);
 
-        return redirect()->route('topic.show', $id);
+        return redirect()->route('topic.show', public_id($id));
     }
 
     /**

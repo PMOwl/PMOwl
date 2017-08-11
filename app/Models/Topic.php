@@ -5,9 +5,11 @@ namespace App\Models;
 use App\Models\ScopeTrait\PublicScopeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Lingxi\Hashids\ModelTraits\PublicId;
 
 class Topic extends Model
 {
+    use PublicId;
     use PublicScopeTrait;
     use SoftDeletes;
 

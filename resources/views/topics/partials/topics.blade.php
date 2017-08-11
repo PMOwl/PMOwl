@@ -26,7 +26,7 @@
                         <span class="hidden-xs label label-default">{{ $topic->category->name }}</span>
                     @endif
 
-                    <a href="{{ route('topic.show', $topic->id) }}" title="{!! $topic->title !!}">{!! $topic->title !!}</a>
+                    <a href="{{ route('topic.show', $topic->public_id) }}" title="{!! $topic->title !!}">{!! $topic->title !!}</a>
                 </div>
             </div>
         </li>
