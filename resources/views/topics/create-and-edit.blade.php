@@ -19,7 +19,7 @@
                 @include('layouts.partials.errors')
 
                 @if (isset($topic))
-                    <form method="POST" action="{{ route('topic.update', $topic->id) }}" accept-charset="UTF-8"
+                    <form method="POST" action="{{ route('topic.update', $topic->public_id) }}" accept-charset="UTF-8"
                           id="topic-edit-form" class="topic-form">
                         {{ method_field('PUT') }}
                         @else

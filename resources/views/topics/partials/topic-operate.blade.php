@@ -49,13 +49,13 @@
         @if (Auth::check() && (/*$manageTopics ||*/ Auth::user()->id == $topic->user_id) )
 
             <a data-method="delete" id="topic-delete-button" href="javascript:void(0);"
-               data-url="{{ route('topic.delete', [$topic->id]) }}" data-content="{{ trans('Delete') }}"
+               data-url="{{ route('topic.delete', [$topic->public_id]) }}" data-content="{{ trans('Delete') }}"
                class="admin popover-with-html">
                 <i class="fa fa-trash-o"></i>
             </a>
 
             <a id="topic-edit-button"
-               href="{{ isset($isArticle) ?  route('articles.edit', [$topic->id]) : route('topic.edit', [$topic->id]) }}"
+               href="{{ isset($isArticle) ?  route('articles.edit', [$topic->public_id]) : route('topic.edit', [$topic->public_id]) }}"
                data-content="{{ trans('Edit') }}" class="admin  popover-with-html no-pjax">
                 <i class="fa fa-pencil-square-o"></i>
             </a>
