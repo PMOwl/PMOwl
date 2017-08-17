@@ -12,7 +12,7 @@
     ⋅
     @if (count($topic->lastReplyUser))
         {{ trans('site.info.Last Reply by') }}
-        <a href="{{ route('users.show', [$topic->lastReplyUser->id]) }}">
+        <a href="{{ route('user.show', [$topic->lastReplyUser->id]) }}">
             {{{ $topic->lastReplyUser->name }}}
         </a>
         {{ trans('site.info.publish at') }} <abbr title="{{ $topic->updated_at }}" class="timeago">{{ $topic->updated_at }}</abbr>

@@ -20,12 +20,14 @@ return [
 
         // 路由中需要被 decode 的 id
         'route_parameters' => [
-            'public_id'
+            'public_id',
+            'topic_id',
         ],
 
         // 请求参数需要被 decode 的 id
         'request_parameters' => [
-            'public_id'
+            'public_id',
+            'topic_id',
         ]
    ],
 

@@ -46,6 +46,13 @@ Route::group([
     Route::delete('{public_id}/delete', 'TopicsController@destroy')->name('topic.delete');
 });
 
+Route::group([
+    'prefix' => 'replies'
+], function(){
+    Route::post('store', 'RepliesController@store')->name('reply.store');
+    Route::post('delete', 'RepliesController@destroy')->name('reply.destroy');
+});
+
 // 用户
 Route::group([
     'prefix' => 'users'

@@ -60,7 +60,7 @@
                     {{--}--}}
                     {{--@endphp--}}
                     {{--@if($adminOperation)--}}
-                        {{--本帖由 <a href="{{ route('users.show', $revisionAdmin->id) }}"--}}
+                        {{--本帖由 <a href="{{ route('user.show', $revisionAdmin->id) }}"--}}
                                {{--target="_blank">{{$revisionAdmin->name}}</a>--}}
                         {{--于 {{$revisionHistory->created_at->diffForHumans()}} {{$adminOperation}}--}}
                     {{--@endif--}}
@@ -70,7 +70,7 @@
         </div>
 
 
-        {{--@include('topics.partials.show-segment')--}}
+        @include('topics.partials.show-segment')
     </div>
 
     {{--@if( $topic->user->payment_qrcode )--}}

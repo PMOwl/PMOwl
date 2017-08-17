@@ -10,8 +10,9 @@ namespace App\Services;
 
 
 use App\Models\Topic;
+use Illuminate\Support\Facades\Input;
 
-class TopicServices
+class TopicsServices
 {
     /**
      * 创建帖子
@@ -78,6 +79,25 @@ class TopicServices
         $result = $model::where('id', $id)->with('user')->firstOrFail();
 
         return $result;
+    }
+
+    /**
+     * 获取帖子回复列表
+     * @param Topic $topic
+     * @param string $order
+     * @param int $limit
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getTopicRepliesWithLimit(Topic $topic, $order = 'created_at', $limit = 30)
+    {
+        $pageName = 'page';
+        // Default display the latest reply
+        $latest_page = is_null(Input::get($pageName)) ? ceil($topic->reply_count / $limit) : 1;
+        $query = $topic->replies()->with('user');
+
+        $query = ($order == 'vote_count') ? $query->orderBy('vote_count', 'desc') : $query->orderBy('created_at', 'asc');
+
+        return $query->paginate($limit, ['*'], $pageName, $latest_page);
     }
 
     /**

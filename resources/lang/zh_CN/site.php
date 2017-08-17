@@ -25,11 +25,17 @@ return [
         'publish at' => '发表于',
         'Last Reply by' => '最后回复',
         'Reads' => '阅读',
+        'Total Reply Count' => '回复数',
+        'No Replies' => '没有回复',
+        'You need to verify the email for commenting.' => '你需要验证邮箱才可回复。',
+        'User Login Required for commenting.' => '登录后才可回复。',
+        'Please input.' => '请输入。',
     ],
     'button' => [
         'Publish' => '发布',
         'Update' => '更新',
-        'Confirm' => '确认'
+        'Confirm' => '确认',
+        'Reply' => '回复',
     ],
     'input_name' => [
         'avatar' => '头像',

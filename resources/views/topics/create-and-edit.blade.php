@@ -83,11 +83,12 @@
         $(document).ready(function () {
             @if ( ! isset($topic))
             localStorage.getItem('topic-title', function (err, value) {
-                if ($('#topic-title').val() === '' && !err) {
-                    $('#topic-title').val(value);
+                var topicTitle = $('#topic-title');
+                if (topicTitle.val() === '' && !err) {
+                    topicTitle.val(value);
                 }
             });
-            $('#topic-title').keyup(function () {
+            topicTitle.keyup(function () {
                 localStorage.setItem('topic-title', $(this).val());
             });
             @endif

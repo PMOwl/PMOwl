@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Topics;
+namespace App\Http\Requests\Replies;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoteTopic extends FormRequest
+class StoreReplyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class StoteTopic extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => 'required',
-            'title' => 'required|unique:topics',
+            'topic_id' => 'required',
             'body' => 'required'
         ];
     }

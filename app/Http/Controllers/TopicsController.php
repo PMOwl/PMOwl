@@ -2,36 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Topics\StoreTopicRequest;
 use App\Models\Category;
-use App\Models\Topic;
-use App\Services\TopicServices;
+use App\Services\TopicsServices;
 use App\Utils\EntityUtil;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TopicsController extends Controller
 {
     /**
-     * @var TopicServices
+     * @var TopicsServices
      */
-    private $topicServices;
+    private $topicsServices;
 
-    public function __construct(TopicServices $topicServices)
+    public function __construct(TopicsServices $topicsServices)
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
-        $this->topicServices = $topicServices;
+        $this->topicsServices = $topicsServices;
     }
 
     /**
      * @param Request $request
-     * @param TopicServices $topic
+     * @param TopicsServices $topic
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
     {
         $filter = $request->get('filter', 'index');
 
-        $topics = $this->topicServices->getTopicsWithFilter($filter, 40);
+        $topics = $this->topicsServices->getTopicsWithFilter($filter, 40);
 
         return view('topics.index', compact('topics'));
     }
@@ -54,11 +53,11 @@ class TopicsController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTopicRequest $request)
     {
         $params = $request->only('category_id', 'title', 'body');
 
-        $topicId = $this->topicServices->storeTopic($params);
+        $topicId = $this->topicsServices->storeTopic($params);
 
         return redirect()->route('topic.show', publicId($topicId));
     }
@@ -67,17 +66,20 @@ class TopicsController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        $topic = $this->topicServices->getTopic($id);
+        $topic = $this->topicsServices->getTopic($id);
+
+        $replies = $this->topicsServices->getTopicRepliesWithLimit($topic, $request->order_by);
 
         $hits = EntityUtil::updateHit($topic, EntityUtil::TOPIC);
 
         $topic->view_count = $topic->view_count + $hits;
 
-        return view('topics.show', compact('topic'));
+        return view('topics.show', compact('topic', 'replies'));
     }
 
     /**
@@ -90,7 +92,7 @@ class TopicsController extends Controller
     {
         $categories = Category::all();
 
-        $topic = $this->topicServices->getTopic($id);
+        $topic = $this->topicsServices->getTopic($id);
 
         return view('topics.create-and-edit', compact('categories', 'topic'));
     }
@@ -106,7 +108,7 @@ class TopicsController extends Controller
     {
         $params = $request->only('category_id', 'title', 'body');
 
-        $this->topicServices->updateTopic($id, $params);
+        $this->topicsServices->updateTopic($id, $params);
 
         return redirect()->route('topic.show', public_id($id));
     }
@@ -119,7 +121,7 @@ class TopicsController extends Controller
      */
     public function destroy($id)
     {
-        $this->topicServices->destroyTopic($id);
+        $this->topicsServices->destroyTopic($id);
 
         return redirect()->route('community');
     }
