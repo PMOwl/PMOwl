@@ -21,8 +21,9 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li class="{{ request()->is('community') && !request()->is('categories*')?'active':'' }}"><a href="{{ route('community') }}">社区</a></li>
-                <li class="{{ request()->is('categories/4')?'active':''}}"><a href="{{ route('categories', 4) }}">challenger.ai</a></li>
+                <li class="{{ request()->is('community') && !request()->is('categories*')?'active':'' }}"><a href="{{ route('community') }}">{{ trans('site.site_nav_category.community') }}</a></li>
+                <li class="{{ request()->is('categories/1')?'active':''}}"><a href="{{ route('categories', 1) }}">{{ trans('site.site_nav_category.qa') }}</a></li>
+                <li class="{{ request()->is('categories/4')?'active':''}}"><a href="{{ route('categories', 4) }}">{{ trans('site.site_nav_category.challenger_ai') }}</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

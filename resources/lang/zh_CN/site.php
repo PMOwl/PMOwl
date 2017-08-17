@@ -11,6 +11,11 @@ return [
         'index' => '首页',
         'Create New Account' => '创建新账号'
     ],
+    'site_nav_category' => [
+        'community' => '社区',
+        'qa' => '问答',
+        'challenger_ai' => 'challenger.ai'
+    ],
     'category' => [
         'active' => '活跃',
         'excellent' => '精华',

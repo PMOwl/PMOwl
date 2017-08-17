@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="col-md-9 topics-index main-col">
+        @include('topics.partials.index-info')
         <div class="panel panel-default">
 
             <div class="panel-heading">
