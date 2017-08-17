@@ -101,6 +101,24 @@ class TopicsServices
     }
 
     /**
+     * 获取分类列表
+     * @param $filter
+     * @param $category_id
+     * @param int $perPage
+     * @return mixed
+     */
+    public function getCategoryTopicsWithFilter($filter, $category_id, $perPage = 15)
+    {
+        $filter = $this->getTopicFilter($filter);
+
+        return $this->applyFilter($filter)
+            ->where('category_id', '=', $category_id)
+            ->with('user', 'category', 'lastReplyUser')
+            ->paginate($perPage);
+
+    }
+
+    /**
      * 获取类别分页数据
      * @param $filter
      * @param int $perPage

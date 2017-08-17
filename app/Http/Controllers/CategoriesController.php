@@ -21,7 +21,7 @@ class CategoriesController extends Controller
     public function index($categoryId, Request $request)
     {
         $category = app(Category::class)->findOrFail($categoryId);
-        $topics = app(TopicsServices::class)->getTopicsWithFilter($request->get('filter', 'default'), $categoryId);
+        $topics = app(TopicsServices::class)->getCategoryTopicsWithFilter($request->get('filter', 'default'), $categoryId);
 
 
         return view('topics.index', compact('topics', 'category'));
