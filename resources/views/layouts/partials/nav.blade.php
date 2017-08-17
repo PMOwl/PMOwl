@@ -3,7 +3,8 @@
         <div class="navbar-header">
 
             <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#app-navbar-collapse">
                 <span class="sr-only">Toggle Navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -12,7 +13,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ url('/assets/images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}" />
+                <img src="{{ url('/assets/images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}"/>
                 {{ config('app.name', 'Laravel') }}
             </a>
         </div>
@@ -20,7 +21,8 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li><a href="{{ route('community') }}">社区</a></li>
+                <li class="{{ request()->is('community') && !request()->is('categories*')?'active':'' }}"><a href="{{ route('community') }}">社区</a></li>
+                <li class="{{ request()->is('categories/4')?'active':''}}"><a href="{{ route('categories', 4) }}">challenger.ai</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -44,7 +46,8 @@
                                     退出登录
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </li>

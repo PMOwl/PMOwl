@@ -23,7 +23,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/community', 'TopicsController@index')->name('community');
-Route::get('categories/{category_id}')->name('categories');
+Route::get('categories/{category_id}', 'CategoriesController@index')->name('categories');
 Route::get('/about', 'HomeController@about');
 
 Route::group([
