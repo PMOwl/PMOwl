@@ -97,16 +97,16 @@
         <div class="form-group">
             @if (Auth::user())
                 @if (Auth::user()->email)
-                    <textarea class="form-control" rows="5" placeholder="{{ trans('site.info.Please input.') }}"
+                    <textarea class="form-control" rows="5" placeholder="{{ trans('site.info.Please input') }}"
                               style="overflow:hidden" id="reply_content" name="body" cols="50"></textarea>
                 @else
                     <textarea class="form-control" disabled rows="5"
-                              placeholder="{{ trans('site.info.You need to verify the email for commenting.') }}" name="body"
+                              placeholder="{{ trans('site.info.You need to verify the email for commenting') }}" name="body"
                               cols="50"></textarea>
                 @endif
             @else
                 <textarea class="form-control" disabled rows="5"
-                          placeholder="{{ trans('site.info.User Login Required for commenting.') }}" name="body"
+                          placeholder="{{ trans('site.info.User Login Required for commenting') }}" name="body"
                           cols="50"></textarea>
             @endif
         </div>
