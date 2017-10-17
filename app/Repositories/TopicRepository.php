@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\Models\Topic;
+use Illuminate\Database\DatabaseManager;
 
 class TopicRepository extends BaseRepository
 {
@@ -25,6 +26,6 @@ class TopicRepository extends BaseRepository
      */
     public function create(array $data)
     {
-        // TODO: Implement create() method.
+        \DB::table();
     }
 }
