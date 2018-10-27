@@ -30,9 +30,21 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\User::class,
+        'model' => App\Models\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+    ],
+
+    'github' => [
+        'client_id' => env('GITHUB_APP_ID'),
+        'client_secret' => env('GITHUB_APP_SECRET'),
+        'redirect' => env('GITHUB_CALLBACK_URL'),
+    ],
+
+    'wechat_open' => [
+        'client_id' => env('WECHAT_OPEN_APP_ID'),
+        'client_secret' => [env('WECHAT_OPEN_COMPONENT_APP_ID'), env('WECHAT_OPEN_COMPONENT_ACCESS_TOKEN')],
+        'redirect' => env('WECHAT_OPEN_CALLBACK'),
     ],
 
 ];

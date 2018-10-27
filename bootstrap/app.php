@@ -11,8 +11,12 @@
 |
 */
 
+use App\Extensions\Log\AggregateFileHandler;
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\BufferHandler;
+
 $app = new Illuminate\Foundation\Application(
-    realpath(__DIR__.'/../')
+    realpath(__DIR__ . '/../')
 );
 
 /*
@@ -40,6 +44,15 @@ $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
+
+$app->configureMonologUsing(function ($monolog) {
+    $logFile = storage_path('logs/laravel.log');
+    $handler = new AggregateFileHandler($logFile);
+    $handler->setFormatter(
+        new LineFormatter("[%datetime%]%level_name% %message% %context% %extra%\n", 'i:s', true, true)
+    );
+    $monolog->pushHandler(new BufferHandler($handler));
+});
 
 /*
 |--------------------------------------------------------------------------
